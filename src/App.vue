@@ -1,10 +1,31 @@
 <template>
-  <div>hello</div>
+  <header class="header">
+    <div class="header__container">
+      <a href="#" class="header__logo">Apple</a>
+      <nav class="header__menu menu">
+        <div class="menu__body">
+          <ul class="menu__list">
+            <li class="menu__item">
+              <a href="#" class="menu__link">Додому</a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">Товари</a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">Корзина</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
   <catalog-wrapper></catalog-wrapper>
 </template>
 
 <script>
 import CatalogWrapper from "@/components/CatalogWrapper.vue";
+import "./assets/styles/styles.scss";
+
 export default {
   name: "App",
   components: {
@@ -16,22 +37,66 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: #262c37;
+  border-bottom: 1px solid #394252;
 }
 
-nav a {
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  min-height: 70px;
+}
+
+.header__logo {
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+  position: relative;
+  z-index: 5;
+  text-decoration: none;
+}
+
+.menu__body {
+  position: relative;
+  z-index: 5;
+}
+
+.menu__list {
+  display: flex;
+  align-items: center;
+  column-gap: 80px;
+  row-gap: 5px;
+  flex-wrap: wrap;
+}
+
+.menu__link {
+  font-size: 18px;
   font-weight: bold;
-  color: #2c3e50;
+  transition: padding 0.3s ease;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.menu__item {
+  list-style: none;
+}
+
+.menu__link:hover {
+  padding: 15px;
+  background-color: #1d4ed8;
+  color: #fff;
+  border-radius: 15px;
+}
+
+.menu__link {
+  text-decoration: none;
+  color: #fff;
 }
 </style>

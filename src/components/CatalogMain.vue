@@ -1,6 +1,6 @@
 <template>
   <div class="catalog">
-    <h1>Catalog</h1>
+    <h1>Список товарів</h1>
     <div class="catalog__list">
       <catalog-item
         v-for="product in PRODUCTS"
@@ -46,8 +46,9 @@ export default {
   &__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 50px;
   }
 }
 </style>
