@@ -45,7 +45,7 @@ export default {
   }
 
   &__image-wrap {
-    width: 100px;
+    width: 200px;
     overflow: hidden;
     margin: 0 auto;
   }
