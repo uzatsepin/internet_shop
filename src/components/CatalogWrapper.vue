@@ -1,31 +1,33 @@
 <template>
   <div class="catalog-wrapper">
-    <p>{{title}}</p>
+    <catalog-main></catalog-main>
+    <catalog-cart></catalog-cart>
   </div>
 </template>
 
 <script>
-  export default {
-    name: "CatalogWrapper",
-    components: {},
-    props: {},
-    data() {
-      return {
-        title: 'Main Wrapper'
-      }
-    },
-    computed: {},
-    methods: {},
-    watch: {},
-    mounted() {
-      console.log("Тест")
-    }
-  }
+import CatalogMain from "@/components/CatalogMain.vue";
+import CatalogCart from "@/components/CatalogCart.vue";
+
+export default {
+  name: "CatalogWrapper",
+  components: {
+    CatalogMain,
+    CatalogCart,
+  },
+  props: {},
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {},
+  watch: {},
+};
 </script>
 
-<style>
-  .catalog-wrapper {
-    width: 900px;
-    margin: 0 auto;
-  }
+<style lang="scss">
+.catalog-wrapper {
+  width: 900px;
+  margin: 0 auto;
+}
 </style>
