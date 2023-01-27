@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss">
 .catalog-wrapper {
-  width: 1410px;
+  max-width: 1410px;
   padding: 0 15px;
   margin: 0 auto;
 }

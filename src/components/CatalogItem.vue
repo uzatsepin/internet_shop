@@ -1,8 +1,8 @@
 <template>
   <div class="catalog-item">
     <div class="catalog-item__image-wrap">
-      <a href="#"
-        ><img
+      <a href="#">
+        <img
           class="catalog-item__image"
           :src="product_data.image"
           alt="Product"
@@ -17,7 +17,9 @@
           {{ product_data.price }}
           <span>грн</span>
         </p>
-        <button @click="addToCart" class="catalog-item__btn">Купити</button>
+        <button @click="addToCart" class="catalog-item__btn">
+          <span>Купити</span>
+        </button>
       </div>
     </div>
   </div>
@@ -53,6 +55,9 @@ export default {
   min-height: 450.57px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 390px) {
+    max-width: 375px;
+  }
 
   &__image-wrap {
     padding: 2rem;
@@ -121,6 +126,13 @@ export default {
     &:focus {
       box-shadow: var(--tw-ring-inset) 0 0 0
         calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    }
+
+    & span {
+      padding-right: 34px;
+      display: inline-block;
+      background: url("../assets/img/cart.svg") right no-repeat;
+      color: white;
     }
   }
 }
