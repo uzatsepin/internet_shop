@@ -4,6 +4,17 @@
       <a href="#" class="header__logo">Apple</a>
       <nav class="header__menu menu">
         <div class="menu__body">
+          <Slide noOverlay>
+            <a href="#" id="home">
+              <span>Додому</span>
+            </a>
+            <a href="#" id="home">
+              <span>Товари</span>
+            </a>
+            <a href="#" id="home">
+              <span>Корзина</span>
+            </a>
+          </Slide>
           <ul class="menu__list">
             <li class="menu__item">
               <a href="#" class="menu__link">Додому</a>
@@ -24,12 +35,14 @@
 
 <script>
 import CatalogWrapper from "@/components/CatalogWrapper.vue";
+import { Slide } from "vue3-burger-menu";
 import "./assets/styles/styles.scss";
 
 export default {
   name: "App",
   components: {
     CatalogWrapper,
+    Slide,
   },
 };
 </script>
@@ -37,6 +50,28 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+.bm-menu {
+  background-color: #262c37;
+}
+
+.bm-burger-button {
+  position: static;
+  width: 36px;
+  height: 30px;
+  top: 20px;
+  cursor: pointer;
+  left: 85%;
+  display: none;
+}
+@media (max-width: 530px) {
+  .bm-burger-button {
+    display: block;
+  }
+}
+.bm-burger-bars {
+  background-color: #fff;
 }
 
 .header {
@@ -53,7 +88,7 @@ export default {
   gap: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-  min-height: 70px;
+  min-height: 71px;
 }
 
 .header__logo {
@@ -76,6 +111,12 @@ export default {
   column-gap: 80px;
   row-gap: 5px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 530px) {
+  .menu__list {
+    display: none;
+  }
 }
 
 .menu__link {
