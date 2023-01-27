@@ -1,7 +1,9 @@
 <template>
   <header class="header">
     <div class="header__container">
-      <a href="#" class="header__logo">Apple</a>
+      <router-link :to="{ name: 'catalog' }" class="header__logo">
+        Apple
+      </router-link>
       <nav class="header__menu menu">
         <div class="menu__body">
           <Slide noOverlay>
