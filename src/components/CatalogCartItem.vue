@@ -8,6 +8,9 @@
       />
       <div class="catalog-cart-item__info">
         <h3 class="catalog-cart-item__title">{{ cart_item_data.name }}</h3>
+        <p class="catalog-cart-item__subtitle">
+          Артикул: {{ cart_item_data.article }}
+        </p>
       </div>
     </div>
 
@@ -51,7 +54,7 @@
       </button>
     </div>
     <div class="catalog-cart-item__price">
-      <b>{{ cart_item_data.quantity * cart_item_data.price }}</b>
+      <b>1</b>
     </div>
     <div class="catalog-cart-item__remove">
       <button
@@ -113,7 +116,13 @@ export default {
     width: 100px;
   }
   &__title {
-    color: $mainBlue;
+    color: $black;
+    margin-bottom: 10px;
+    max-width: 330px;
+  }
+  &__subtitle {
+    color: #8d8d8d;
+    font-size: 18px;
   }
   &__quantity {
     display: flex;
