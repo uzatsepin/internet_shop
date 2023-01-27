@@ -6,7 +6,7 @@
         v-for="product in PRODUCTS"
         :key="product.id"
         :product_data="product"
-        @sendName="showName"
+        @addToCart="addToCart"
       />
     </div>
   </div>
@@ -28,9 +28,9 @@ export default {
     ...mapGetters(["PRODUCTS"]),
   },
   methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API"]),
-    showName(data) {
-      console.log(data);
+    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
+    addToCart(data) {
+      this.ADD_TO_CART(data);
     },
   },
   mounted() {

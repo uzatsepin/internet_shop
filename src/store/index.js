@@ -5,10 +5,30 @@ import axios from "axios";
 const store = createStore({
   state: {
     products: [],
+    cart: [],
   },
   mutations: {
     SET_PRODUCTS_TO_STATE: (state, products) => {
       state.products = products;
+    },
+    SET_CART: (state, product) => {
+      if (state.cart.length) {
+        let isProductExists = false;
+        state.cart.map(function (item) {
+          if (item.id === product.id) {
+            isProductExists = true;
+            item.quantity++;
+          }
+        });
+        if (!isProductExists) {
+          state.cart.push(product);
+        }
+      } else {
+        state.cart.push(product);
+      }
+    },
+    REMOVE_FROM_CART: (state, id) => {
+      state.cart.splice(id, 1);
     },
   },
   actions: {
@@ -26,10 +46,19 @@ const store = createStore({
           return error;
         });
     },
+    ADD_TO_CART({ commit }, product) {
+      commit("SET_CART", product);
+    },
+    DELETE_FROM_CART({ commit }, id) {
+      commit("REMOVE_FROM_CART", id);
+    },
   },
   getters: {
     PRODUCTS(state) {
       return state.products;
+    },
+    CART(state) {
+      return state.cart;
     },
   },
 });

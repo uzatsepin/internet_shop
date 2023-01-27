@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     addToCart() {
-      this.$emit("sendName", this.product_data.name);
+      this.$emit("addToCart", this.product_data);
     },
   },
 };
