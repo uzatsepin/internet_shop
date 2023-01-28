@@ -1,6 +1,5 @@
 <template>
   <div class="catalog-wrapper">
-    <!-- <catalog-cart v-if="CART.length" :cart_data="CART" /> -->
     <router-view />
   </div>
 </template>

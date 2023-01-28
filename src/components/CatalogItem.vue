@@ -1,17 +1,17 @@
 <template>
   <div class="catalog-item">
     <div class="catalog-item__image-wrap">
-      <a href="#">
+      <router-link :to="'/' + product_data.article">
         <img
           class="catalog-item__image"
           :src="product_data.image"
           alt="Product"
-      /></a>
+      /></router-link>
     </div>
     <div class="catalog-item__info">
-      <a href="#">
+      <router-link :to="'/' + product_data.article">
         <p class="catalog-item__name">{{ product_data.name }}</p>
-      </a>
+      </router-link>
       <div class="catalog-item__action">
         <p class="catalog-item__price">
           {{ product_data.price }}

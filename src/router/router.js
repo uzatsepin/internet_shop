@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import CatalogMain from "@/components/CatalogMain.vue";
 import CatalogCart from "@/components/CatalogCart.vue";
+import CatalogItemPage from "@/components/CatalogItemPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -16,6 +17,11 @@ const router = createRouter({
       name: "cart",
       component: CatalogCart,
       props: true,
+    },
+    {
+      path: "/:id?",
+      name: "product",
+      component: CatalogItemPage,
     },
   ],
 });

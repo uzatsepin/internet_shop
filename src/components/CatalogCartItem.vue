@@ -54,7 +54,7 @@
       </button>
     </div>
     <div class="catalog-cart-item__price">
-      <b>1</b>
+      <b>{{ cart_item_data.price }}</b>
     </div>
     <div class="catalog-cart-item__remove">
       <button

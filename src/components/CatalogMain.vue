@@ -3,7 +3,7 @@
     <div class="catalog__wrapper">
       <router-link :to="{ name: 'cart' }">
         <div class="catalog__link button button--cart">
-          <span>39999 ₴</span>
+          <span>{{ SUM.toString() }} ₴</span>
           <div class="button__delimiter"></div>
           <svg
             width="18"
@@ -63,13 +63,15 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "CART"]),
+    ...mapGetters(["PRODUCTS", "CART", "SUM"]),
   },
   methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
+    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART", "SUM_PRICE"]),
 
     addToCart(data) {
       this.ADD_TO_CART(data);
+      this.$store.commit("SUM_PRICE");
+      console.log(this.$store.state.sumPrice);
     },
   },
   mounted() {

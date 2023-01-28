@@ -6,6 +6,7 @@ const store = createStore({
   state: {
     products: [],
     cart: [],
+    sumPrice: 0,
   },
   mutations: {
     SET_PRODUCTS_TO_STATE: (state, products) => {
@@ -30,6 +31,9 @@ const store = createStore({
     REMOVE_FROM_CART: (state, id) => {
       state.cart.splice(id, 1);
     },
+    SUM_PRICE: (state) => {
+      state.sumPrice = state.cart.map((el) => el.price * el.quantity);
+    },
   },
   actions: {
     GET_PRODUCTS_FROM_API({ commit }) {
@@ -52,6 +56,9 @@ const store = createStore({
     DELETE_FROM_CART({ commit }, id) {
       commit("REMOVE_FROM_CART", id);
     },
+    SUM_PRICE({ commit }, sumPrice) {
+      commit("SUM_PRICE", sumPrice);
+    },
   },
   getters: {
     PRODUCTS(state) {
@@ -59,6 +66,9 @@ const store = createStore({
     },
     CART(state) {
       return state.cart;
+    },
+    SUM(state) {
+      return state.sumPrice;
     },
   },
 });
