@@ -55,7 +55,7 @@ export default {
 }
 
 .bm-menu {
-  background-color: #262c37;
+  background-color: #262c37 !important;
 }
 
 .bm-burger-button {
@@ -73,7 +73,7 @@ export default {
   }
 }
 .bm-burger-bars {
-  background-color: #fff;
+  background-color: #fff !important;
 }
 
 .header {
