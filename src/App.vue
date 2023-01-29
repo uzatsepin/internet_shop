@@ -7,9 +7,9 @@
       <nav class="header__menu menu">
         <div class="menu__body">
           <Slide noOverlay>
-            <a href="#" id="home">
+            <router-link to="/" id="home">
               <span>Додому</span>
-            </a>
+            </router-link>
             <a href="#" id="home">
               <span>Товари</span>
             </a>
@@ -19,7 +19,7 @@
           </Slide>
           <ul class="menu__list">
             <li class="menu__item">
-              <a href="#" class="menu__link">Додому</a>
+              <router-link to="/" class="menu__link">Додому</router-link>
             </li>
             <li class="menu__item">
               <a href="#" class="menu__link">Товари</a>

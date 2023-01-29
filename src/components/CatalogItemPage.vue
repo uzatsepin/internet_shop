@@ -1,6 +1,5 @@
 <template>
   <div class="product-main" v-for="(product, idx) in currentProduct" :key="idx">
-    <div v-if="!product" class="product__error">Сторінку оновлено, це баг</div>
     <div v-if="product" class="product">
       <h3 class="product__title">{{ product.name }}</h3>
       <div class="product__wrapper">
@@ -25,7 +24,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -35,10 +34,20 @@ export default {
   computed: {
     ...mapGetters(["PRODUCTS"]),
   },
+  methods: {
+    ...mapActions(["GET_PRODUCTS_FROM_API"]),
+  },
   mounted() {
-    this.currentProduct.push(
-      this.PRODUCTS.find((product) => product.article === this.$route.params.id)
-    );
+    // this.currentProduct.push(
+    //   this.PRODUCTS.find((product) => product.article === this.$route.params.id)
+    // );
+    this.GET_PRODUCTS_FROM_API().then(() => {
+      this.currentProduct.push(
+        this.PRODUCTS.find(
+          (product) => product.article === this.$route.params.id
+        )
+      );
+    });
   },
 };
 </script>
@@ -62,6 +71,10 @@ export default {
     font-size: 36px;
     margin-bottom: 40px;
     text-align: center;
+    @media (max-width: 390px) {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
   }
   &__descr {
     display: flex;
@@ -70,6 +83,7 @@ export default {
     justify-content: space-between;
     @media (max-width: 390px) {
       justify-content: unset;
+      margin-top: 20px;
     }
   }
   &__wrapper {
@@ -78,6 +92,7 @@ export default {
     justify-content: center;
     @media (max-width: 390px) {
       flex-direction: column;
+      align-items: baseline;
     }
   }
   &__img {
@@ -97,8 +112,9 @@ export default {
     border-radius: 8px;
     overflow: hidden;
     @media (max-width: 390px) {
-      width: 330px;
+      width: 250px;
       margin: 0 auto;
+      height: auto;
     }
   }
   &__price {
