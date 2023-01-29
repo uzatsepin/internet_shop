@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss">
 .catalog-cart {
-  padding-top: 60px;
+  padding-top: 30px;
   &__empty {
     margin: 80px auto;
     widows: 620px;
