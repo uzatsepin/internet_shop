@@ -104,7 +104,6 @@ export default {
   &__link {
     display: flex;
     align-items: center;
-    width: 200px;
     cursor: pointer;
   }
 }
