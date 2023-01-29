@@ -6,7 +6,7 @@
       </router-link>
       <nav class="header__menu menu">
         <div class="menu__body">
-          <Slide noOverlay>
+          <Slide noOverlay :closeOnNavigation="true">
             <router-link to="/" id="home">
               <span>Додому</span>
             </router-link>
