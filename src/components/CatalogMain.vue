@@ -37,6 +37,12 @@
           <span>{{ CART.length }}</span>
         </div>
       </router-link>
+      <input
+        class="catalog__link-input"
+        type="text"
+        placeholder="Пошук товарів..."
+        v-model="filter"
+      />
       <h1>Список товарів</h1>
     </div>
     <div class="catalog__list">
@@ -60,7 +66,9 @@ export default {
     CatalogItem,
   },
   data() {
-    return {};
+    return {
+      filter: "",
+    };
   },
   computed: {
     ...mapGetters(["PRODUCTS", "CART", "SUM"]),
@@ -105,6 +113,32 @@ export default {
     display: flex;
     align-items: center;
     cursor: pointer;
+  }
+  &__link-input {
+    box-sizing: border-box;
+    height: 50px;
+    width: 250px;
+    padding: 12.5px;
+    outline: none;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(15, 15, 51, 0.4);
+    font-size: 18px;
+    color: #262c37;
+    background-color: #ffffff;
+    transition: 0.4s;
+    &:hover,
+    :focus {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 5px 5px rgba(15, 15, 51, 0.4);
+    }
+
+    &:not(:placeholder-shown) {
+      margin-bottom: 10px;
+      border-bottom: 6px solid #1e40af;
+      height: 69px;
+    }
   }
 }
 </style>
