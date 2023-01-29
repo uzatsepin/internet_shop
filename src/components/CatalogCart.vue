@@ -56,6 +56,9 @@ export default {
     display: block;
     width: 500px;
     margin: 45px auto 60px;
+    @media (max-width: 520px) {
+      width: 350px;
+    }
   }
   &__btn {
     padding: 12px 0 14px;

@@ -13,9 +13,9 @@
             <a href="#" id="home">
               <span>Товари</span>
             </a>
-            <a href="#" id="home">
+            <router-link to="/cart" id="home">
               <span>Корзина</span>
-            </a>
+            </router-link>
           </Slide>
           <ul class="menu__list">
             <li class="menu__item">
@@ -25,7 +25,7 @@
               <a href="#" class="menu__link">Товари</a>
             </li>
             <li class="menu__item">
-              <a href="#" class="menu__link">Корзина</a>
+              <router-link to="/cart" class="menu__link">Корзина</router-link>
             </li>
           </ul>
         </div>
@@ -52,6 +52,7 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  padding-bottom: 50px;
 }
 
 .bm-menu {
