@@ -59,12 +59,12 @@ export default {
 }
 
 .bm-burger-button {
-  position: static;
-  width: 36px;
+  position: static !important;
+  width: 36px !important;
   height: 30px;
-  top: 20px;
+  top: 20px !important;
   cursor: pointer;
-  left: 85%;
+  left: 85% !important;
   display: none;
 }
 @media (max-width: 530px) {
