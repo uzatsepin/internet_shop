@@ -100,9 +100,6 @@ export default {
       this.$store.commit("SUM_PRICE");
       console.log(this.$store.state.sumPrice);
     },
-    onSearch() {
-      this.filter = "";
-    },
   },
   mounted() {
     this.GET_PRODUCTS_FROM_API();
@@ -181,6 +178,9 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  &__empty-title {
+    text-align: center;
   }
 }
 </style>
