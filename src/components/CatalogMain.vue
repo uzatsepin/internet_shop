@@ -37,21 +37,35 @@
           <span>{{ CART.length }}</span>
         </div>
       </router-link>
-      <input
-        class="catalog__link-input"
-        type="text"
-        placeholder="Пошук товарів..."
-        v-model="filter"
-      />
+      <div class="catalog__search">
+        <span class="catalog__search-icon"><fa icon="search"></fa></span>
+        <input
+          type="search"
+          id="search"
+          placeholder="Пошук.."
+          v-model="filter"
+          @keydown.enter="onSearch"
+        />
+      </div>
       <h1>Список товарів</h1>
     </div>
     <div class="catalog__list">
       <catalog-item
-        v-for="product in PRODUCTS"
+        v-for="product in filterProduct"
         :key="product.id"
         :product_data="product"
         @addToCart="addToCart"
       />
+      <div class="catalog__empty" v-if="filterProduct.length <= 0">
+        <h2 class="catalog__empty-title">
+          Нічого не знайдено Повторіть свій запит
+        </h2>
+        <img
+          src="../assets/img/search-empty.webp"
+          alt="empty cart"
+          class="catalog__empty-img"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -72,6 +86,11 @@ export default {
   },
   computed: {
     ...mapGetters(["PRODUCTS", "CART", "SUM"]),
+    filterProduct() {
+      return this.PRODUCTS.filter((products) =>
+        products.name.toLowerCase().includes(this.filter.toLowerCase())
+      );
+    },
   },
   methods: {
     ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART", "SUM_PRICE"]),
@@ -80,6 +99,9 @@ export default {
       this.ADD_TO_CART(data);
       this.$store.commit("SUM_PRICE");
       console.log(this.$store.state.sumPrice);
+    },
+    onSearch() {
+      this.filter = "";
     },
   },
   mounted() {
@@ -114,31 +136,51 @@ export default {
     align-items: center;
     cursor: pointer;
   }
-  &__link-input {
-    box-sizing: border-box;
-    height: 50px;
-    width: 250px;
-    padding: 12.5px;
-    outline: none;
-    border: none;
-    border-radius: 25px;
-    box-shadow: 0 2px 5px rgba(15, 15, 51, 0.4);
-    font-size: 18px;
-    color: #262c37;
-    background-color: #ffffff;
-    transition: 0.4s;
-    &:hover,
-    :focus {
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 5px 5px rgba(15, 15, 51, 0.4);
+  &__search {
+    position: relative;
+    vertical-align: middle;
+    white-space: nowrap;
+    & input#search {
+      width: 70px;
+      height: 50px;
+      background: #eaeaea;
+      border: none;
+      font-size: 16px;
+      float: left;
+      padding-left: 35px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      color: #262c37;
+      -webkit-transition: width 0.55s ease;
+      -moz-transition: width 0.55s ease;
+      -ms-transition: width 0.55s ease;
+      -o-transition: width 0.55s ease;
+      transition: width 0.55s ease;
+      &:focus,
+      &:active {
+        outline: none;
+        width: 250px;
+      }
+      &:hover {
+        outline: none;
+      }
     }
-
-    &:not(:placeholder-shown) {
-      margin-bottom: 10px;
-      border-bottom: 6px solid #1e40af;
-      height: 69px;
-    }
+  }
+  &__search-icon {
+    position: absolute;
+    top: 0;
+    margin-left: 10px;
+    margin-top: 16px;
+    z-index: 1;
+    color: #4f5b66;
+  }
+  &__empty {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>
