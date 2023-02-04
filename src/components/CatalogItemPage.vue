@@ -58,9 +58,6 @@ export default {
     ...mapActions(["GET_PRODUCTS_FROM_API"]),
   },
   mounted() {
-    // this.currentProduct.push(
-    //   this.PRODUCTS.find((product) => product.article === this.$route.params.id)
-    // );
     this.GET_PRODUCTS_FROM_API().then(() => {
       this.currentProduct.push(
         this.PRODUCTS.find(

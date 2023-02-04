@@ -3,7 +3,7 @@
     <div class="catalog__wrapper">
       <router-link :to="{ name: 'cart' }">
         <div class="catalog__link button button--cart">
-          <span>{{ SUM.toString() }} ₴</span>
+          <span>1 ₴</span>
           <div class="button__delimiter"></div>
           <svg
             width="18"
@@ -85,7 +85,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "CART", "SUM"]),
+    ...mapGetters(["PRODUCTS", "CART"]),
     filterProduct() {
       return this.PRODUCTS.filter((products) =>
         products.name.toLowerCase().includes(this.filter.toLowerCase())
@@ -93,12 +93,10 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART", "SUM_PRICE"]),
+    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
 
     addToCart(data) {
       this.ADD_TO_CART(data);
-      this.$store.commit("SUM_PRICE");
-      console.log(this.$store.state.sumPrice);
     },
   },
   mounted() {
