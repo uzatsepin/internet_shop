@@ -1,11 +1,17 @@
 <template>
   <div class="cart-item-wrapper">
-    <catalog-cart-item
-      v-for="(item, idx) in cart_data"
-      :key="item.id"
-      :cart_item_data="item"
-      @deleteFromCart="deleteFromCart(idx)"
-    />
+    <div class="cart-item-inner">
+      <catalog-cart-item
+        v-for="(item, idx) in cart_data"
+        :key="item.id"
+        :cart_item_data="item"
+        @deleteFromCart="deleteFromCart(idx)"
+      />
+    </div>
+    <div class="cart-item-wrapper__total">
+      <p class="cart-item-wrapper__total-title">Загальна вартість:</p>
+      <p class="cart-item-wrapper__total-price">{{ cartTotalCost }} грн</p>
+    </div>
   </div>
 </template>
 
@@ -31,7 +37,37 @@ export default {
       this.DELETE_FROM_CART(idx);
     },
   },
+  computed: {
+    cartTotalCost() {
+      let cartTotalCost = [];
+
+      for (let item of this.cart_data) {
+        cartTotalCost.push(item.price * item.quantity);
+      }
+      cartTotalCost = cartTotalCost.reduce(function (sum, el) {
+        return sum + el;
+      });
+      return cartTotalCost;
+    },
+  },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "../assets/styles/variables.scss";
+.cart-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  &__total {
+    margin: 40px auto 0 auto;
+    display: flex;
+    font-size: 22px;
+  }
+  &__total-price {
+    margin-left: 10px;
+    font-weight: bold;
+    color: $mainBlue;
+    font-size: 24px;
+  }
+}
+</style>
