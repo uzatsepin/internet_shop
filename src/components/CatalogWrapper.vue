@@ -9,9 +9,7 @@
 import { mapGetters } from "vuex";
 export default {
   name: "CatalogWrapper",
-  components: {
-    // CatalogCart,
-  },
+  components: {},
   props: {},
   data() {
     return {};

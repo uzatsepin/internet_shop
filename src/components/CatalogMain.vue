@@ -3,7 +3,7 @@
     <div class="catalog__wrapper">
       <router-link :to="{ name: 'cart' }">
         <div class="catalog__link button button--cart">
-          <span>1 ₴</span>
+          <span>{{ cartTotalCost }} ₴</span>
           <div class="button__delimiter"></div>
           <svg
             width="18"
@@ -90,6 +90,17 @@ export default {
       return this.PRODUCTS.filter((products) =>
         products.name.toLowerCase().includes(this.filter.toLowerCase())
       );
+    },
+    cartTotalCost() {
+      let cartTotalCost = [0];
+
+      for (let item of this.CART) {
+        cartTotalCost.push(item.price * item.quantity);
+      }
+      cartTotalCost = cartTotalCost?.reduce(function (sum, el) {
+        return sum + el;
+      });
+      return cartTotalCost;
     },
   },
   methods: {

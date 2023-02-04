@@ -18,7 +18,7 @@
       <div class="catalog-cart-item__quantity">
         <button
           class="button button--outline button--circle cart__item-count-minus"
-          :disabled="cart_item_data.quantity === 1"
+          :disabled="cart_item_data.quantity <= 1"
           @click="decrementItem"
         >
           <svg

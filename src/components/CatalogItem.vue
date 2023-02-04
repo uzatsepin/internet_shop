@@ -71,7 +71,6 @@ export default {
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease-in-out;
-  cursor: pointer;
   &:hover {
     transform: scale(1.02);
   }
@@ -100,7 +99,6 @@ export default {
       color: #1f2937;
       font-weight: bold;
       transition: color 0.3s ease;
-
       &:hover {
         color: #1e40af;
       }
@@ -128,7 +126,7 @@ export default {
 
   &__btn {
     color: #111827;
-    border: 2px solid #1d4ed8;
+    border: 2px solid #1e40af;
     background-color: #ffffff;
     font-weight: 500;
     border-radius: 40px;
@@ -141,6 +139,12 @@ export default {
 
     &:hover {
       background-color: #1e40af;
+      span {
+        color: #fff;
+        & svg {
+          fill: #fff;
+        }
+      }
     }
 
     &:focus {
@@ -154,10 +158,10 @@ export default {
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      color: #1d4ed8;
+      color: #1e40af;
       transition: all 0.3s ease-in-out;
       & svg {
-        fill: #1d4ed8;
+        fill: #1e40af;
         transition: all 0.3s ease-in-out;
       }
       &:hover {
