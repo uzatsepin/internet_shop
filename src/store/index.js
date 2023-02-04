@@ -30,6 +30,15 @@ const store = createStore({
     REMOVE_FROM_CART: (state, id) => {
       state.cart.splice(id, 1);
     },
+    INCREMENT: (state, index) => {
+      state.cart[index].quantity++;
+      // console.log(state.cart[0].quantity);
+    },
+    DECREMENT: (state, index) => {
+      if (state.cart[index].quantity > 1) {
+        state.cart[index].quantity--;
+      }
+    },
   },
   actions: {
     GET_PRODUCTS_FROM_API({ commit }) {
@@ -48,6 +57,12 @@ const store = createStore({
     },
     ADD_TO_CART({ commit }, product) {
       commit("SET_CART", product);
+    },
+    INCREMENT_CART_ITEM({ commit }, index) {
+      commit("INCREMENT", index);
+    },
+    DECREMENT_CART_ITEM({ commit }, index) {
+      commit("DECREMENT", index);
     },
     DELETE_FROM_CART({ commit }, id) {
       commit("REMOVE_FROM_CART", id);

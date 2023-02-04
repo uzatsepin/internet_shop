@@ -18,6 +18,8 @@
       <div class="catalog-cart-item__quantity">
         <button
           class="button button--outline button--circle cart__item-count-minus"
+          :disabled="cart_item_data.quantity === 1"
+          @click="decrementItem"
         >
           <svg
             width="10"
@@ -35,6 +37,7 @@
         <b>{{ cart_item_data.quantity }}</b>
         <button
           class="button button--outline button--circle cart__item-count-plus"
+          @click="incrementItem"
         >
           <svg
             width="10"
@@ -96,6 +99,12 @@ export default {
     deleteFromCart() {
       this.$emit("deleteFromCart");
     },
+    incrementItem() {
+      this.$emit("incrementItem");
+    },
+    decrementItem() {
+      this.$emit("decrementItem");
+    },
   },
 };
 </script>
@@ -156,6 +165,13 @@ export default {
     & b {
       font-size: 24px;
     }
+  }
+}
+.cart__item-count-minus {
+  &:disabled {
+    border-color: #787878;
+    opacity: 0.4;
+    color: #fff;
   }
 }
 </style>

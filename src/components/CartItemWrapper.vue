@@ -6,6 +6,8 @@
         :key="item.id"
         :cart_item_data="item"
         @deleteFromCart="deleteFromCart(idx)"
+        @incrementItem="incrementItem(idx)"
+        @decrementItem="decrementItem(idx)"
       />
     </div>
     <div class="cart-item-wrapper__total">
@@ -32,7 +34,17 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["DELETE_FROM_CART"]),
+    ...mapActions([
+      "DELETE_FROM_CART",
+      "INCREMENT_CART_ITEM",
+      "DECREMENT_CART_ITEM",
+    ]),
+    decrementItem(idx) {
+      this.DECREMENT_CART_ITEM(idx);
+    },
+    incrementItem(idx) {
+      this.INCREMENT_CART_ITEM(idx);
+    },
     deleteFromCart(idx) {
       this.DELETE_FROM_CART(idx);
     },

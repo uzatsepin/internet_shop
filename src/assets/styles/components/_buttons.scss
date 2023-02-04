@@ -67,6 +67,9 @@
 
     &:hover {
       background-color: $mainBlue;
+      &:disabled {
+        background-color: #fff;
+      }
 
       &,
       span {
@@ -82,6 +85,13 @@
 
     &:active {
       background-color: darken($mainBlue, 8%);
+    }
+    &:disabled {
+      svg {
+        path {
+          fill: #787878;
+        }
+      }
     }
   }
 
